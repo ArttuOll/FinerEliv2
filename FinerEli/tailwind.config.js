@@ -2,7 +2,9 @@
 module.exports = {
     content: ["./Pages/**/*.cshtml"],
     theme: {
-        extend: {},
+        fontFamily: {
+            sans: ["Poppins", "sans-serif"],
+        }
     },
     plugins: [],
 }
