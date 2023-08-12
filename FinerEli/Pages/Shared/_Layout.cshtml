@@ -8,36 +8,30 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">FinerEli</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <nav class="flex flex-row px-2 space-x-4 items-baseline">
+        <a asp-area="" asp-page="/Index" class="font-serif font-semibold text-4xl">FinerEli</a>
+        <ul class="flex flex-row space-x-4">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Haku</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/About">Tietoa</a>
+            </li>
+        </ul>
     </nav>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+<main>
+    @RenderBody()
+</main>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2023 - FinerEli - <a asp-area="" asp-page="/Privacy">Privacy</a>
-    </div>
+<footer class="space-y-1">
+    <p>
+        &copy; 2023
+    </p>
+    <p>Arttu Olli</p>
+    <p>
+        <a href="">GitHub</a>
+    </p>
 </footer>
 
 <script src="~/js/site.js" asp-append-version="true"></script>
