@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - FinerEli</title>
     <link rel="stylesheet" href="~/css/output.css" asp-append-version="true"/>
 </head>
-<body>
+<body class="min-h-screen flex flex-col h-full justify-between py-2">
 <header>
     <nav class="flex flex-row px-2 space-x-4 items-baseline">
         <a asp-area="" asp-page="/Index" class="font-serif font-semibold text-4xl">FinerEli</a>
@@ -20,11 +20,11 @@
         </ul>
     </nav>
 </header>
-<main>
+<main class="flex flex-col items-center">
     @RenderBody()
 </main>
 
-<footer class="space-y-1">
+<footer class="space-y-1 px-2">
     <p>
         &copy; 2023
     </p>
