@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<FoodsContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("Filename=../../../FinerEli.db")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("Filename=./db/FinerEli.db")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
