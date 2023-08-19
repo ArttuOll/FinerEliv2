@@ -12,7 +12,8 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public RedirectToPageResult OnGet()
     {
+        return RedirectToPage("/Search");
     }
 }
