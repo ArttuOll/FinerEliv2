@@ -1,4 +1,5 @@
 using FinerEli.Models;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+var connectionString = new SqliteConnectionStringBuilder
+{
+    DataSource = "./db/FinerEli.db",
+    Mode = SqliteOpenMode.ReadWriteCreate
+}.ToString();
+
 builder.Services.AddDbContext<FoodsContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("Filename=./db/FinerEli.db")));
+    options.UseSqlite(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
