@@ -29,7 +29,7 @@ public class SearchModel : PageModel
         FoodNames = result.Select(ToSentenceCase).ToList();
     }
 
-    private string ToSentenceCase(string s)
+    private static string ToSentenceCase(string s)
     {
         var lower = s.ToLower();
         return char.ToUpper(lower[0]) + lower.Substring(1);
