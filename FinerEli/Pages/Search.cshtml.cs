@@ -32,6 +32,6 @@ public class SearchModel : PageModel
     private static string ToSentenceCase(string s)
     {
         var lower = s.ToLower();
-        return char.ToUpper(lower[0]) + lower.Substring(1);
+        return char.ToUpper(lower[0]) + lower[1..];
     }
 }
