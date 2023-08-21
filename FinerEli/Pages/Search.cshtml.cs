@@ -25,7 +25,7 @@ public class SearchModel : PageModel
             where f.Name.ToLower().Contains(Q.ToLower())
             select f.Name;
 
-        var result = await foods.ToListAsync();
+        var result = await foods.Take(10).ToListAsync();
         FoodNames = result.Select(ToSentenceCase).ToList();
     }
 
