@@ -23,6 +23,7 @@ public class SearchModel : PageModel
         if (string.IsNullOrWhiteSpace(Q)) return;
         var foods = from f in _context.Foods
             where f.Name.ToLower().Contains(Q.ToLower())
+            orderby f.Name
             select f.Name;
 
         var result = await foods.Take(10).ToListAsync();
