@@ -20,6 +20,7 @@ public class SearchModel : PageModel
 
     public async void OnGetAsync()
     {
+        if (string.IsNullOrWhiteSpace(Q)) return;
         var foods = from f in _context.Foods
             where f.Name.ToLower().Contains(Q.ToLower())
             select f.Name;
