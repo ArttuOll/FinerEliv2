@@ -2,8 +2,11 @@
 
 @foreach (var foodName in Model)
 {
-    <li
-        class="text-xl pb-3">
-        @foodName
+    <li>
+        <a
+            class="text-xl pb-3 hover:underline"
+            href="#">
+            @foodName
+        </a>
     </li>
 }
