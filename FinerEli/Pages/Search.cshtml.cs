@@ -18,9 +18,10 @@ public class SearchModel : PageModel
 
     public IList<string> FoodNames { get; set; } = new List<string>();
 
-    public async void OnGetAsync()
+    public async Task<IActionResult> OnGetAsync()
     {
-        if (string.IsNullOrWhiteSpace(Q)) return;
+        if (HttpContext.Request.Headers["Hx-Trigger"] != "search") return Page();
+        if (string.IsNullOrWhiteSpace(Q)) return Partial("_FoodItems", FoodNames);
         var foods = from f in _context.Foods
             where f.Name.ToLower().Contains(Q.ToLower())
             orderby f.Name
@@ -28,6 +29,8 @@ public class SearchModel : PageModel
 
         var result = await foods.Take(10).ToListAsync();
         FoodNames = result.Select(ToSentenceCase).ToList();
+
+        return Partial("_FoodItems", FoodNames);
     }
 
     private static string ToSentenceCase(string s)
