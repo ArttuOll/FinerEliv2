@@ -1,12 +1,16 @@
 ﻿@model IList<string>
 
-@foreach (var foodName in Model)
-{
-    <li>
-        <a
-            class="text-xl pb-3 hover:underline"
-            href="#">
-            @foodName
-        </a>
-    </li>
-}
+<ol
+    id="food-list"
+    class="space-y-4">
+    @foreach (var foodName in Model)
+    {
+        <li>
+            <a
+                class="text-xl text-lime-950 pb-3 hover:underline"
+                href="#">
+                @foodName
+            </a>
+        </li>
+    }
+</ol>

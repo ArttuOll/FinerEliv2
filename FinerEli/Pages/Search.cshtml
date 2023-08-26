@@ -42,8 +42,5 @@
         </noscript>
     </p>
 </form>
-<ol
-    class="mt-10"
-    id="food-list">
-    @await Html.PartialAsync("_FoodItems", Model.FoodNames)
-</ol>
+
+@await Html.PartialAsync("_FoodItems", Model.FoodNames)
