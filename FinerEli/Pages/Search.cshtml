@@ -30,11 +30,6 @@
             hx-push-url="true"
             hx-indicator="#loading-indicator"
             class="w-full rounded border border-lime-900 bg-transparent px-3 py-2.5 text-sm placeholder:text-gray-800 outline outline-0 transition-all focus:border-2 focus:border-lime-500 focus:outline-0"/>
-        <img
-            id="loading-indicator"
-            class="animate-spin htmx-indicator"
-            src="/img/loading.svg"
-            alt="Ladataan tietoja..."/>
         <noscript >
             <input
                 type="submit"
@@ -42,5 +37,10 @@
         </noscript>
     </p>
 </form>
+<img
+    id="loading-indicator"
+    class="animate-spin htmx-indicator mb-3"
+    src="/img/loading.svg"
+    alt="Ladataan tietoja..."/>
 
 @await Html.PartialAsync("_FoodItems", Model.FoodNames)
