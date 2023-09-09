@@ -11,13 +11,18 @@
 <form
     method="get"
     action="/Search"
-    name="Q"
     class="flex flex-col w-1/2 mb-5">
     <label
         for="search"
         class="sr-only">
         Elintarvikkeen nimi
     </label>
+    <button
+        type="submit"
+        disabled
+        class="hidden"
+        aria-hidden="true">
+    </button>
     <p
         class="flex space-x-4">
         <input
