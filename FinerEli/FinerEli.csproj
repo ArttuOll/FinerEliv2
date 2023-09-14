@@ -11,9 +11,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.js"/>
-        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js"/>
-        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map"/>
         <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt"/>
     </ItemGroup>
 
@@ -30,8 +27,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-
-    <Target Name="Tailwind" BeforeTargets="Build">
-        <Exec Command="npm run css:watch"/>
+    
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="npm run css:build" />
     </Target>
 </Project>
