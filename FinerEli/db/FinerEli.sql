@@ -30,3 +30,20 @@ create table main.Foods
             primary key autoincrement,
     Name TEXT    not null
 );
+
+create table ComponentClasses
+(
+    Name        TEXT not null
+        constraint PK_ComponentClasses
+            primary key,
+    Description TEXT not null
+);
+
+create table Components
+(
+    EufdNameThsCode    TEXT not null,
+    ComponentUnitName  TEXT not null,
+    ComponentClassName TEXT not null,
+    constraint PK_Components
+        primary key (EufdNameThsCode, ComponentUnitName, ComponentClassName)
+);
