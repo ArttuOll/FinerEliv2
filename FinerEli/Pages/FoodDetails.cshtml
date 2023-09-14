@@ -5,4 +5,17 @@
     ViewData["Title"] = "Elintarvike";
 }
 
-<h1></h1>
+<section>
+    <h1 class="text-xl pb-5">@Model.Food.Name</h1>
+
+    <ul>
+        @foreach (var componentClass in Model.ComponentClasses)
+        {
+            <li>
+                <details>
+                    <summary>@componentClass.Description</summary>
+                </details>
+            </li>
+        }
+    </ul>
+</section>
