@@ -22,6 +22,7 @@ public class SearchModel : PageModel
     {
         if (HttpContext.Request.Headers["Hx-Trigger"] != "search") return Page();
         if (string.IsNullOrWhiteSpace(Q)) return Partial("_FoodItems", FoodNames);
+        
         var foods = from f in _context.Foods
             where f.Name.ToLower().Contains(Q.ToLower())
             orderby f.Name
