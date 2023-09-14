@@ -40,6 +40,7 @@ using (var scope = app.Services.CreateScope())
     context.Database.EnsureCreated();
 }
 
+app.UseStatusCodePagesWithRedirects("/Errors/{0}");
 
 app.UseHttpsRedirection();
 
@@ -50,7 +51,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
-app.UseStatusCodePagesWithRedirects("/Errors/{0}");
 
 app.Run();
