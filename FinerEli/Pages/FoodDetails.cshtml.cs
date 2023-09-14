@@ -30,11 +30,18 @@ public class FoodDetails : PageModel
 
         var componentValues = _context.ComponentValues.Where(componentValue => componentValue.FoodId == Food.Id).ToList();
         
+        // Get component name, value and unit, grouped by component class in LINQ syntax
         var componentClasses = from componentValue in componentValues
             join component in _context.Components on componentValue.EufdNameThsCode equals component.EufdNameThsCode
             join componentClass in _context.ComponentClasses on component.ComponentClassName equals componentClass.Name
+            join eufdName in _context.EufdNames on componentValue.EufdNameThsCode equals eufdName.ThsCode
+            join componentUnit in _context.ComponentUnits on component.ComponentUnitName equals componentUnit.Name
             orderby componentValue.Value descending 
-            select componentClass;
+            group new {Name = eufdName.Description, componentValue.Value, Unit = componentUnit.Description} by componentClass
+            into g
+            select new {ComponentClass = g.Key, ComponentValues = g};
+        
+        
         
         ComponentClasses = componentClasses.Distinct();
 
