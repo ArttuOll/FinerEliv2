@@ -16,9 +16,9 @@ public class SearchModel : PageModel
 
     [BindProperty(SupportsGet = true)] public string? Q { get; set; }
 
-    public IList<Models.Food> Foods { get; set; } = new List<Models.Food>();
+    public IList<Food> Foods { get; set; } = new List<Food>();
 
-    public async Task<IActionResult> OnGetAsync()
+    public async Task<IActionResult> OnGet()
     {
         if (HttpContext.Request.Headers["Hx-Trigger"] != "search") return Page();
         if (string.IsNullOrWhiteSpace(Q)) return Partial("_FoodItems", Foods);
@@ -34,7 +34,7 @@ public class SearchModel : PageModel
         return Partial("_FoodItems", Foods);
     }
 
-    private static Models.Food FoodNameToSentenceCase(Models.Food food)
+    private static Food FoodNameToSentenceCase(Food food)
     {
         var lower = food.Name.ToLower();
         var name = char.ToUpper(lower[0]) + lower[1..];
