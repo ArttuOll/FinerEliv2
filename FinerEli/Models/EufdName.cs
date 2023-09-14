@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FinerEli.Models;
 
+[PrimaryKey(nameof(ThsCode))]
 public class EufdName
 {
-    [Key] public string ThsCode { get; set; }
+    public string ThsCode { get; set; }
 
     public string Description { get; set; }
 }

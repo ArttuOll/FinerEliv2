@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FinerEli.Models;
 
+[PrimaryKey(nameof(Id))]
 public class Food
 {
-    [Key] public int Id { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; }
 }
