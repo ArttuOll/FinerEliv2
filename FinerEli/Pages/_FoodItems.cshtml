@@ -1,15 +1,15 @@
-﻿@model IList<string>
+﻿@model IList<FinerEli.Models.Food>
 
 <ol
     id="food-list"
     class="space-y-4">
-    @foreach (var foodName in Model)
+    @foreach (var food in Model)
     {
         <li>
             <a
                 class="text-xl text-lime-950 pb-3 hover:underline"
                 href="#">
-                @foodName
+                @food.Name
             </a>
         </li>
     }

@@ -16,27 +16,29 @@ public class SearchModel : PageModel
 
     [BindProperty(SupportsGet = true)] public string? Q { get; set; }
 
-    public IList<string> FoodNames { get; set; } = new List<string>();
+    public IList<Models.Food> Foods { get; set; } = new List<Models.Food>();
 
     public async Task<IActionResult> OnGetAsync()
     {
         if (HttpContext.Request.Headers["Hx-Trigger"] != "search") return Page();
-        if (string.IsNullOrWhiteSpace(Q)) return Partial("_FoodItems", FoodNames);
+        if (string.IsNullOrWhiteSpace(Q)) return Partial("_FoodItems", Foods);
         
         var foods = from f in _context.Foods
             where f.Name.ToLower().Contains(Q.ToLower())
             orderby f.Name
-            select f.Name;
+            select f;
 
         var result = await foods.Take(10).ToListAsync();
-        FoodNames = result.Select(ToSentenceCase).ToList();
+        Foods = result.Select(FoodNameToSentenceCase).ToList();
 
-        return Partial("_FoodItems", FoodNames);
+        return Partial("_FoodItems", Foods);
     }
 
-    private static string ToSentenceCase(string s)
+    private static Models.Food FoodNameToSentenceCase(Models.Food food)
     {
-        var lower = s.ToLower();
-        return char.ToUpper(lower[0]) + lower[1..];
+        var lower = food.Name.ToLower();
+        var name = char.ToUpper(lower[0]) + lower[1..];
+        food.Name = name;
+        return food;
     }
 }
