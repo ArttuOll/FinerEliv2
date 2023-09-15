@@ -15,7 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Migrations\"/>
         <Folder Include="wwwroot\lib\"/>
     </ItemGroup>
 
@@ -27,8 +26,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-    
+
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="npm run css:build" />
+        <Exec Command="npm run css:build"/>
     </Target>
 </Project>
