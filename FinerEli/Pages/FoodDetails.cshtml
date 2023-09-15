@@ -1,19 +1,33 @@
 ﻿@page "{id:int}"
-@model FinerEli.Pages.FoodDetails
+@model FoodDetails
 
 @{
     ViewData["Title"] = "Elintarvike";
 }
 
 <section>
-    <h1 class="text-xl pb-5">@Model.Food.Name</h1>
+    <h1
+        class="text-xl pb-5">
+        @Model.Food.Name
+    </h1>
 
     <ul>
-        @foreach (var componentClass in Model.ComponentClasses)
+
+        @foreach (var foodDetailsGrouping in Model.FoodDetailsData)
         {
             <li>
                 <details>
-                    <summary>@componentClass.Description</summary>
+                    <summary>@foodDetailsGrouping.ComponentClass.Description</summary>
+                    <ul>
+                        @foreach (var foodDetails in foodDetailsGrouping.FoodDetailsModels)
+                        {
+                            <li>
+                                <span>@foodDetails.Name</span>
+                                <span>@foodDetails.Value</span>
+                                <span>@foodDetails.Unit</span>
+                            </li>
+                        }
+                    </ul>
                 </details>
             </li>
         }
