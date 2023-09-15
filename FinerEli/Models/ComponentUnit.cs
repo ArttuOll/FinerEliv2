@@ -2,10 +2,10 @@
 
 namespace FinerEli.Models;
 
-[PrimaryKey(nameof(Name))]
+[PrimaryKey(nameof(EufdNameThsCode))]
 public class ComponentUnit
 {
-     public string Name { get; set; }
+    public string EufdNameThsCode { get; set; }
 
-     public string Description { get; set; }
+    public string Description { get; set; }
 }
