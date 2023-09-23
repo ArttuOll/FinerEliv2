@@ -1,4 +1,5 @@
 ﻿using FinerEli.Models;
+using FinerEli.Util;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -22,23 +23,19 @@ public class SearchModel : PageModel
     {
         if (HttpContext.Request.Headers["Hx-Trigger"] != "search") return Page();
         if (string.IsNullOrWhiteSpace(Q)) return Partial("_FoodItems", Foods);
-        
+
         var foods = from f in _context.Foods
             where f.Name.ToLower().Contains(Q.ToLower())
             orderby f.Name
             select f;
 
         var result = await foods.Take(10).ToListAsync();
-        Foods = result.Select(FoodNameToSentenceCase).ToList();
+        Foods = result.Select(food =>
+        {
+            food.Name = StringFormatting.ToSentenceCase(food.Name);
+            return food;
+        }).ToList();
 
         return Partial("_FoodItems", Foods);
-    }
-
-    private static Food FoodNameToSentenceCase(Food food)
-    {
-        var lower = food.Name.ToLower();
-        var name = char.ToUpper(lower[0]) + lower[1..];
-        food.Name = name;
-        return food;
     }
 }
