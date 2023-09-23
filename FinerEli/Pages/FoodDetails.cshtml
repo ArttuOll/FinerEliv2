@@ -17,14 +17,26 @@
         {
             <li>
                 <details>
-                    <summary>@foodDetailsGrouping.ComponentClass.Description</summary>
+                    <summary
+                        class="border-lime-200
+                        rounded-t-1
+                        w-full
+                        cursor-pointer
+                        items-center
+                        border-b
+                        border-solid
+                        p-4
+                        font-semibold">
+                        @foodDetailsGrouping.ComponentClass.Description
+                    </summary>
                     <ul>
                         @foreach (var foodDetails in foodDetailsGrouping.FoodDetailsModels)
                         {
-                            <li>
-                                <span>@foodDetails.Name</span>
-                                <span>@foodDetails.Value</span>
-                                <span>@foodDetails.Unit</span>
+                            <li
+                                class="px-4 py-2">
+                                @foodDetails.Name
+                                @foodDetails.Value
+                                @foodDetails.Unit
                             </li>
                         }
                     </ul>

@@ -1,4 +1,5 @@
 ﻿using FinerEli.Models;
+using FinerEli.Util;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -36,7 +37,7 @@ public class FoodDetails : PageModel
             orderby componentValue.Value descending
             group new FoodDetailsModel
                 {
-                    Name = eufdName.Description, Value = componentValue.Value,
+                    Name = StringFormatting.ToSentenceCase(eufdName.Description), Value = componentValue.Value,
                     Unit = componentUnit.EufdNameThsCode.ToLower()
                 } by
                 componentClass
